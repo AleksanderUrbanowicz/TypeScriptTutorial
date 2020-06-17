@@ -37,17 +37,55 @@ log(endsWith2);
 let log2 = (message) => {
     console.log(message);
 };
+//log2(messageString);
+//Custom types
+// interface IPoint{
+//     x: number,
+//     y: number,
+//     z: number
+// }
 class Point {
-    constructor(x, y, z) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
+    //TS compiler generates fields from constructor
+    // private x: number;
+    // private y: number;
+    // private z: number;
+    //only one constructor in TS,
+    constructor(_x, _y, _z) {
+        this._x = _x;
+        this._y = _y;
+        this._z = _z;
+        //Assigments done automatically by access modifiers above
+        // this.x=x;
+        // this.y=y;
+        // this.z=z;
     }
+    //in TS default modifier is public
     renderPoint() {
-        return this.x * this.y * this.z;
+        return this._x * this._y * this._z;
     }
     calculateDistance(from) {
     }
+    //Properties
+    get x() {
+        return this._x;
+    }
+    set x(value) {
+        this._x = value;
+    }
+    get y() {
+        return this._y;
+    }
+    set y(value) {
+        this._y = value;
+    }
+    get z() {
+        return this._z;
+    }
+    set z(value) {
+        this._z = value;
+    }
 }
 let point1 = new Point(2, 4, 6);
+let point2 = new Point(1, 2, 3);
+let point3 = new Point();
 log(point1.renderPoint());
